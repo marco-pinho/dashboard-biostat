@@ -1,0 +1,38 @@
+---
+title: "Dashboard de Biostatística"
+format: 
+  dashboard:
+    theme: cosmo
+    orientation: columns
+---
+
+
+## Column {width=65%}
+
+### Análise de Dispersão Interativa
+
+```{r}
+#| title: "Relação entre variáveis (Dataset Iris)"
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(plotly)
+
+# Criando um gráfico ggplot clássico
+p <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point(size = 2, alpha = 0.7) +
+  theme_minimal() +
+  labs(x = "Comprimento da Sépala", y = "Largura da Sépala")
+
+# Transformando em interativo
+ggplotly(p)
+
+```
+
+## Column {width=35%}
+
+```{r}
+#| title: "Amostra dos Dados"
+knitr::kable(head(iris))
+```
